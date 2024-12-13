@@ -1,0 +1,87 @@
+<script>
+    console.log("Hello World");
+    function getComputerChoice()
+    {
+let a = (Math.floor(Math.random()*3));
+if (a===0){
+    return("rock");
+}
+else if (a===1){
+    return("paper");
+}
+else return("scissors");
+    }
+   
+   
+    function getHumanChoice() {
+    let b;
+    while (true) {
+        b = prompt("Your turn. Type either rock, paper, or scissors");
+        
+        if (b === null) {
+            console.log("Game canceled by the user.");
+            return null; // Exit the game if canceled
+        }
+        
+        b = b.toLowerCase();
+        
+        if (b === "rock" || b === "paper" || b === "scissors") {
+            console.log(`You chose: ${b}`);
+            return b;
+        }
+        
+        console.log("Incorrect value. Try again.");
+    }
+}
+   
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice){
+
+if (humanChoice == "rock" && computerChoice == "paper"){
+    computerScore++;
+    console.log("computer wins this round");
+}
+if (humanChoice == "rock" && computerChoice == "scissors"){
+    humanScore++;
+    console.log("human wins this round");
+}
+if (humanChoice == "paper" && computerChoice == "scissors"){
+    computerScore++;
+    console.log("computer wins this round");
+}
+if (humanChoice == "paper" && computerChoice == "rock"){
+    humanScore++;
+    console.log("human wins this round");
+}
+if (humanChoice == "scissors" && computerChoice == "rock"){
+    computerScore++;
+    console.log("computer wins this round");
+}
+if (humanChoice == "scissors" && computerChoice == "paper"){
+    humanScore++;
+    console.log("human wins this round");
+}
+
+}
+
+
+for (let i = 0;i<5;i++){
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+}
+
+console.log(`Final Score: Human - ${humanScore} | Computer - ${computerScore}`);
+if (humanScore > computerScore) {
+    console.log("You win the game!");
+} else if (humanScore < computerScore) {
+    console.log("Computer wins the game!");
+} else {
+    console.log("It's a tie!");
+}
+
+
+</script>
